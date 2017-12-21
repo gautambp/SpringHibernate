@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+	default-init-method="init">
+
+	<bean id="person" class="self.learning.spring.basic.Person" scope="prototype" 
+			destroy-method="onDestroy" factory-method="createPerson" factory-bean="personFactory">
+		<constructor-arg value="123"></constructor-arg>
+		<constructor-arg value="My Name"></constructor-arg>
+		<property name="prop"><value>prop value</value></property>
+		<property name="address" ref="address"></property>
+	</bean>
+
+	<bean id="address" class="self.learning.spring.basic.Address">
+		<property name="street" value="123 main st"></property>
+		<property name="city" value="myCity"></property>
+	</bean>
+	
+	<bean id="personFactory" class="self.learning.spring.basic.PersonFactory"></bean>
+	
+	<bean id="addressWithNS" class="self.learning.spring.basic.Address" p:street="678 my street" p:city="boston">
+	</bean>
+	
+	<bean id="fruitBasket" class="self.learning.spring.basic.FruitBasket">
+		<property name="fruits">
+			<list>
+				<value>apple</value>
+				<value>banana</value>
+				<value>apple</value>
+			</list>
+		</property>
+		<property name="vegs">
+			<set>
+				<value>tomato</value>
+				<value>potato</value>
+				<value>tomato</value>
+			</set>
+		</property>
+	</bean>	
+</beans>

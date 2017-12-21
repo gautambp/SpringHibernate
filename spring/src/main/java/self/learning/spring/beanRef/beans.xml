@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="lion" class="self.learning.spring.beanRef.Animal">
+		<property name="name" value="lion king"></property>
+		<property name="type" value="lion"></property>
+	</bean>
+
+	<bean id="elephant" class="self.learning.spring.beanRef.Animal">
+		<property name="name" value="kind elephant"></property>
+		<property name="type" value="elephant"></property>
+	</bean>
+
+	<bean id="snake" class="self.learning.spring.beanRef.Animal">
+		<property name="name" value="sneaky snake"></property>
+		<property name="type" value="snake"></property>
+	</bean>
+	
+	<bean id="jungle" class="self.learning.spring.beanRef.Jungle">
+		<property name="largest" ref="elephant"></property>
+		<property name="animals">
+			<list>
+				<ref bean="snake"/>
+				<ref bean="elephant"/>
+				<ref bean="lion"/>
+				<!-- Inner bean example -->
+				<bean id="eagle" class="self.learning.spring.beanRef.Animal" p:name="bold eagle" p:type="eagle"></bean>
+			</list>
+		</property>
+		<property name="foods">
+			<props>
+				<prop key="gorilla">banana</prop>
+				<prop key="panda">bamboo</prop>
+			</props>
+		</property>
+		<property name="deadlyAnimals">
+			<map>
+				<entry key="theLion" value-ref="lion"></entry>
+				<entry key="theSnake" value-ref="snake"></entry>
+			</map>
+		</property>
+	</bean>
+</beans>

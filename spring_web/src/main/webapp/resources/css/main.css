@@ -1,0 +1,26 @@
+@CHARSET "UTF-8";
+
+.formtable {
+	width: 400px;
+	padding: 10px;
+	border: 1px solid blue;
+}
+
+input[type=text] {
+	width: 150px;
+}
+
+inputarea {
+	width: 150px;
+	height: 200px;
+}
+
+.label {
+	text-align: right;
+	vertical-align: top;
+}
+
+.error {
+	font-size: small;
+	color: red;
+}
